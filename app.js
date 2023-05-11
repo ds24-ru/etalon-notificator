@@ -1,7 +1,7 @@
 const express = require('express')
 const nodemailer = require('nodemailer')
 const multer = require('multer');
-const config = require('./config')
+const config = require('./config.js')
 
 const PORT = config.port
 
@@ -12,6 +12,7 @@ app.use(express.json())
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
 
+// Конфигурация транпортного сервиса, с которого будет отправляться почта
 const emailServices = {
     'etalon': {
         host: config.host,

@@ -84,5 +84,26 @@ pm2 start app.js -i max
 
 2.  Добавьте заголовок `Authorization` с токеном авторизации в формате `Bearer <token>`. Этот `token` будет сверяться с переменной `secret` из вашего `config.js` файла и проводить валидацию запроса.
 
+<code>Для тестирования с помощью <b>curl</b></code>
+  
+3. Добавьте заголовок типа: `-H "Content-Type: application/json"`
+
+Пример запроса:
+```bash
+curl -X POST -H "Content-Type: application/json" -H "Authorization: Bearer SECRET_TOKEN" -d '{
+"transport": "etalon",
+"to": "RECEPIENT",
+"subj": "Тестовое письмо",
+"text": "Hello from Curl!",
+"html": "<h1>Hello from Curl!</h1>"
+}' HOST
+```
+Где:
+`SECRET_TOKEN` - секрет из вашего файла `config.js`
+`RECEPIENT` -  email-адрес получателя сообщения 
+`HOST` - адрес хоста сервиса отправки email. (например, `http://localhost:5554/email`)
+
+<code>Для тестирования с помощью <b>Postman</b></code>
+
 3.  Нажмите кнопку "Send" и проверьте результат. Если все прошло успешно, вы получите сообщение об успешной отправке письма. Если возникла ошибка, вы получите соответствующее сообщение об ошибке.
  
